@@ -40,3 +40,23 @@ def getPenultimate[A](list: List[A]): A = list match {
 
 val myPenultimate2 = getPenultimate(myList)
 
+/* P03 (*) Find the Kth element of a list.
+    By convention, the first element in the list is element 0.
+    Example:
+    scala> nth(2, List(1, 1, 2, 3, 5, 8))
+    res0: Int = 2
+*/
+
+// S01: Built-in method
+val n = 4
+val myNth1 = myList(n)
+
+// S02: Own implementation to get Nth element of a list
+def getNth[A](list: List[A], index: Int): A = (list, index) match {
+  case (Nil, _) => throw new IndexOutOfBoundsException
+  case (head :: _, 0) => head
+  case (_ :: tail, _) => getNth(list = tail, index - 1)
+}
+
+val myNth2 = getNth(myList, n)
+
