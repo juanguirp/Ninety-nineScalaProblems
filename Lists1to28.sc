@@ -83,3 +83,25 @@ val myLength2 = getRealLength(myList, 0)
 def getLength[A](list: List[A]): Int = getRealLength(list, 0)
 
 val myLength3 = getLength(myList)
+
+/* P05 (*) Reverse a list.
+    Example:
+    scala> reverse(List(1, 1, 2, 3, 5, 8))
+    res0: List[Int] = List(8, 5, 3, 2, 1, 1)
+*/
+
+// S01: Built-in method
+val myReversedList1 = myList.reverse
+
+// S02: Own implementation to reverse a list
+def getReverse[A](list: List[A]): List[A] = {
+
+  // Nested/Local function that gets reversed list using tail recursion
+  def getRealReversedList[A](finalList: List[A], realList: List[A]): List[A] = realList match {
+    case Nil => finalList
+    case head :: tail => getRealReversedList(head :: finalList, tail)
+  }
+  getRealReversedList(Nil, list)
+}
+
+val myReversedList2 = getReverse(myList)
