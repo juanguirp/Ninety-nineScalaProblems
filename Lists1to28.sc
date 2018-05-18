@@ -1,13 +1,14 @@
-/* Ninety-nine Scala Problems:
-   Working with lists */
+/* Ninety-nine Scala Problems: */
+
+/* Working with lists */
+
+val myList = List(1, 1, 2, 3, 5, 8)
 
 /* P01 (*) Find the last element of a list.
     Example:
     scala> last(List(1, 1, 2, 3, 5, 8))
     res0: Int = 8
 */
-
-val myList = List(1, 1, 2, 3, 5, 8)
 
 // S01: Built-in method
 val myLastItem1 = myList.last
@@ -60,3 +61,25 @@ def getNth[A](list: List[A], index: Int): A = (list, index) match {
 
 val myNth2 = getNth(myList, n)
 
+/* P04 (*) Find the number of elements of a list.
+    Example:
+    scala> length(List(1, 1, 2, 3, 5, 8))
+    res0: Int = 6
+*/
+
+// S01: Built-in method
+val myLength1 = myList.length
+
+// S02: Own implementation to get the number of elements inside the list
+// (Yes, I love tail recursion <3)
+def getRealLength[A](list: List[A], initLength: Int): Int = list match {
+  case Nil => initLength
+  case head :: tail => getRealLength(tail, initLength + 1)
+}
+
+val myLength2 = getRealLength(myList, 0)
+
+// Wrapper method. Other option: Nested/Local function.
+def getLength[A](list: List[A]): Int = getRealLength(list, 0)
+
+val myLength3 = getLength(myList)
