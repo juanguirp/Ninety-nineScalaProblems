@@ -90,4 +90,20 @@ class ListSetSpec extends FlatSpec {
     // Using built-in solution:
     assert(troubleshooter.getNth(normalList, POSITION4) === normalList(POSITION4))
   }
+
+  "S04: getLength method" should "return zero if list is empty" in {
+    assert(troubleshooter.getLength(emptyList) === ZERO)
+    // Using built-in solution:
+    assert(troubleshooter.getLength(emptyList) === emptyList.length)
+  }
+
+  it should "return the number of elements of a list" in {
+    assert(troubleshooter.getLength(oneElementList) === 1)
+    assert(troubleshooter.getLength(twoElementsList) === 2)
+    assert(troubleshooter.getLength(normalList) === 6)
+    // Using built-in solution:
+    assert(troubleshooter.getLength(oneElementList) === oneElementList.length)
+    assert(troubleshooter.getLength(twoElementsList) === twoElementsList.length)
+    assert(troubleshooter.getLength(normalList) === normalList.length)
+  }
 }
