@@ -126,5 +126,17 @@ class ListProblems {
   // S02: The short way to verify if a list is a palindrome.
   def isPalindromeSimple[A](list: List[A]): Boolean = list == list.reverse
 
+  /* P07 (**) Flatten a nested list structure.
+    Example:
+
+    scala> flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+    res0: List[Any] = List(1, 1, 2, 3, 5, 8)
+  */
+
+  // S01: Built-in solution.
+  // val myFlatList1 = myList.flatten
+
+  // S02: Own implementation to flatten a nested list structure.
+  def flatList[A](list: List[List[A]]): List[A] = List()
 
 }

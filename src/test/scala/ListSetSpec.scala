@@ -15,6 +15,7 @@ class ListSetSpec extends FlatSpec {
   val nonPalindromeList = List(1, 2, 3, 2, 4)
   val impairPalindromeList = List(1, 2, 3, 2, 1)
   val pairPalindromeList = List(1, 2, 2, 1)
+  val listOfList = List(List(1,2), List(3, 4, 5), List(6, 7, 8, 9), List(10))
   val troubleshooter = new ListProblems()
   //info("... OK!")
 
@@ -127,7 +128,7 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getReverse(normalList) === normalList.reverse)
   }
 
-  "S06-A: isPalindrome" should "return true if passed list is empty" in {
+  "S06-A: isPalindrome method" should "return true if passed list is empty" in {
     assert(troubleshooter.isPalindrome(emptyList))
   }
 
@@ -144,7 +145,7 @@ class ListSetSpec extends FlatSpec {
     assert(!troubleshooter.isPalindrome(nonPalindromeList))
   }
 
-  "S06-B: isPalindromeSimple" should "return true if passed list is empty" in {
+  "S06-B: isPalindromeSimple method" should "return true if passed list is empty" in {
     assert(troubleshooter.isPalindromeSimple(emptyList))
   }
 
@@ -159,5 +160,18 @@ class ListSetSpec extends FlatSpec {
 
   it should "return false if passed list is not a palindrome" in {
     assert(!troubleshooter.isPalindromeSimple(nonPalindromeList))
+  }
+
+  "S07: flatList method" should "return the same list if it is empty" in {
+    assert(troubleshooter.flatList(emptyList) === emptyList)
+    // Using built-in solution:
+    assert(troubleshooter.flatList(emptyList) === emptyList.flatten)
+  }
+
+  it should "return flatten list" in {
+    assert(troubleshooter.flatList(listOfList) === List(1,2,3,4,5,6,7,8,9,10))
+    // Using built-in solution:
+    assert(troubleshooter.flatList(listOfList) === listOfList.flatten)
+
   }
 }
