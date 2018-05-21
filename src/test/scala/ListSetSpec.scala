@@ -13,7 +13,8 @@ class ListSetSpec extends FlatSpec {
   val twoElementsList = List(6, 10)
   val normalList = List(1, 1, 2, 3, 5, 8)
   val nonPalindromeList = List(1, 2, 3, 2, 4)
-  val palindromeList = List(1, 2, 3, 2, 1)
+  val impairPalindromeList = List(1, 2, 3, 2, 1)
+  val pairPalindromeList = List(1, 2, 2, 1)
   val troubleshooter = new ListProblems()
   //info("... OK!")
 
@@ -130,8 +131,13 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.isPalindrome(emptyList))
   }
 
+  it should "return true if passed list has just one element" in {
+    assert(troubleshooter.isPalindrome(oneElementList))
+  }
+
   it should "return true if passed list is a palindrome" in {
-    assert(troubleshooter.isPalindrome(palindromeList))
+    assert(troubleshooter.isPalindrome(impairPalindromeList))
+    assert(troubleshooter.isPalindrome(pairPalindromeList))
   }
 
   it should "return false if passed list is not a palindrome" in {

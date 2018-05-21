@@ -111,7 +111,17 @@ class ListProblems {
   */
 
   // S01: Solution to verify if a list is a palindrome.
-  def isPalindrome[A](list: List[A]): Boolean = true
+  def isPalindrome[A](list: List[A]): Boolean = list match {
+    case Nil => true
+    case head :: Nil => true
+    case head :: last :: Nil if (head == last) => true
+    case _ => {
+      val head = list.head
+      val middle = list.slice(1, list.size - 1)
+      val last = list.last
+      if (head != last) false else isPalindrome(middle)
+    }
+  }
 
 
 }
