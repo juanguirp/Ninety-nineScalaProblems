@@ -15,5 +15,22 @@ class ListSetSpec extends FlatSpec {
   val troubleshooter = new ListProblems()
   //info("... OK!")
 
+  "S01: getLast method" should "throw NoSuchElementException if an empty list is passed as parameter" in {
+    assertThrows[NoSuchElementException] {
+      troubleshooter.getLast(emptyList)
+    }
+  }
+
+  it should "return one value if list has just one element" in {
+    assert(troubleshooter.getLast(oneElementList) === 77)
+    // Using built-in solution:
+    assert(troubleshooter.getLast(oneElementList) === oneElementList.last)
+  }
+
+  it should "return the last element of a list" in {
+    assert(troubleshooter.getLast(normalList) === 8)
+    // Using built-in solution:
+    assert(troubleshooter.getLast(normalList) === normalList.last)
+  }
 
 }
