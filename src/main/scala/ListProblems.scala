@@ -13,7 +13,7 @@ class ListProblems {
     Example:
     scala> last(List(1, 1, 2, 3, 5, 8))
     res0: Int = 8
-*/
+  */
 
   // S01: Built-in method.
   // val myLastItem1 = myList.last
@@ -30,7 +30,7 @@ class ListProblems {
     Example:
     scala> penultimate(List(1, 1, 2, 3, 5, 8))
     res0: Int = 5
-*/
+  */
 
   // S01: Built-in solution.
   // val myPenultimate1 = myList.init.last
@@ -49,7 +49,7 @@ class ListProblems {
     Example:
     scala> nth(2, List(1, 1, 2, 3, 5, 8))
     res0: Int = 2
-*/
+  */
 
   // S01: Built-in method.
   // val n = 4
@@ -67,7 +67,7 @@ class ListProblems {
     Example:
     scala> length(List(1, 1, 2, 3, 5, 8))
     res0: Int = 6
-*/
+  */
 
   // S01: Built-in method.
   // val myLength1 = myList.length
@@ -87,7 +87,7 @@ class ListProblems {
     Example:
     scala> reverse(List(1, 1, 2, 3, 5, 8))
     res0: List[Int] = List(8, 5, 3, 2, 1, 1)
-*/
+  */
 
   // S01: Built-in method.
   // val myReversedList1 = myList.reverse
@@ -103,6 +103,15 @@ class ListProblems {
 
     getRealReversedList(Nil, list)
   }
+
+  /* P06 (*) Find out whether a list is a palindrome.
+    Example:
+    scala> isPalindrome(List(1, 2, 3, 2, 1))
+    res0: Boolean = true
+  */
+
+  // S01: Solution to verify if a list is a palindrome.
+  def isPalindrome[A](list: List[A]): Boolean = true
 
 
 }

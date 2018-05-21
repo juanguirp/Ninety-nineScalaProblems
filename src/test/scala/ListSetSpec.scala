@@ -12,6 +12,8 @@ class ListSetSpec extends FlatSpec {
   val oneElementList = List(77)
   val twoElementsList = List(6, 10)
   val normalList = List(1, 1, 2, 3, 5, 8)
+  val nonPalindromeList = List(1, 2, 3, 2, 4)
+  val palindromeList = List(1, 2, 3, 2, 1)
   val troubleshooter = new ListProblems()
   //info("... OK!")
 
@@ -122,5 +124,17 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getReverse(oneElementList) === oneElementList.reverse)
     assert(troubleshooter.getReverse(twoElementsList) === twoElementsList.reverse)
     assert(troubleshooter.getReverse(normalList) === normalList.reverse)
+  }
+
+  "S06: isPalindrome" should "return true if passed list is empty" in {
+    assert(troubleshooter.isPalindrome(emptyList))
+  }
+
+  it should "return true if passed list is a palindrome" in {
+    assert(troubleshooter.isPalindrome(palindromeList))
+  }
+
+  it should "return false if passed list is not a palindrome" in {
+    assert(!troubleshooter.isPalindrome(nonPalindromeList))
   }
 }
