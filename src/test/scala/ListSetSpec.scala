@@ -57,4 +57,37 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getPenultimate(normalList) === normalList.init.last)
   }
 
+  "S03: getNth method" should "throw IndexOutBoundsException if an empty list is passed as parameter" in {
+    assertThrows[IndexOutOfBoundsException]{
+      troubleshooter.getNth(emptyList, POSITION4)
+    }
+  }
+
+  it should "throw IndexOutBoundsException if passed position is bigger than list's length" in {
+    assertThrows[IndexOutOfBoundsException]{
+      troubleshooter.getNth(oneElementList, POSITION4)
+    }
+    assertThrows[IndexOutOfBoundsException]{
+      troubleshooter.getNth(twoElementsList, POSITION4)
+    }
+    assertThrows[IndexOutOfBoundsException]{
+      troubleshooter.getNth(normalList, POSITION99)
+    }
+  }
+
+  it should "return the first element if passed position is zero" in {
+    assert(troubleshooter.getNth(oneElementList, POSITION0) === 77)
+    assert(troubleshooter.getNth(twoElementsList, POSITION0) === 6)
+    assert(troubleshooter.getNth(normalList, POSITION0) === 1)
+    // Using built-in solution:
+    assert(troubleshooter.getNth(oneElementList, POSITION0) === oneElementList(POSITION0))
+    assert(troubleshooter.getNth(twoElementsList, POSITION0) === twoElementsList(POSITION0))
+    assert(troubleshooter.getNth(normalList, POSITION0) === normalList(POSITION0))
+  }
+
+  it should "return the element in passed position" in {
+    assert(troubleshooter.getNth(normalList, POSITION4) === 5)
+    // Using built-in solution:
+    assert(troubleshooter.getNth(normalList, POSITION4) === normalList(POSITION4))
+  }
 }
