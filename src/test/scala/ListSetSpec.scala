@@ -33,4 +33,28 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getLast(normalList) === normalList.last)
   }
 
+  "S02: getPenultimate method" should "throw UnsupportedOperationException if an empty list is passed as parameter" in {
+    assertThrows[UnsupportedOperationException] {
+      troubleshooter.getPenultimate(emptyList)
+    }
+  }
+
+  it should "throw NoSuchElementException if list has just one element" in {
+    assertThrows[NoSuchElementException]{
+      troubleshooter.getPenultimate(oneElementList)
+    }
+  }
+
+  it should "return the first element if list has two elements" in {
+    assert(troubleshooter.getPenultimate(twoElementsList) === 6)
+    // Using built-in solution:
+    assert(troubleshooter.getPenultimate(twoElementsList) === twoElementsList.init.last)
+  }
+
+  it should "return the penultimate element of a list" in {
+    assert(troubleshooter.getPenultimate(normalList) === 5)
+    // Using built-in solution:
+    assert(troubleshooter.getPenultimate(normalList) === normalList.init.last)
+  }
+
 }
