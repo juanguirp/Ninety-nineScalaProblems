@@ -40,7 +40,7 @@ class ListSetSpec extends FlatSpec {
   }
 
   it should "throw NoSuchElementException if list has just one element" in {
-    assertThrows[NoSuchElementException]{
+    assertThrows[NoSuchElementException] {
       troubleshooter.getPenultimate(oneElementList)
     }
   }
@@ -58,19 +58,19 @@ class ListSetSpec extends FlatSpec {
   }
 
   "S03: getNth method" should "throw IndexOutBoundsException if an empty list is passed as parameter" in {
-    assertThrows[IndexOutOfBoundsException]{
+    assertThrows[IndexOutOfBoundsException] {
       troubleshooter.getNth(emptyList, POSITION4)
     }
   }
 
   it should "throw IndexOutBoundsException if passed position is bigger than list's length" in {
-    assertThrows[IndexOutOfBoundsException]{
+    assertThrows[IndexOutOfBoundsException] {
       troubleshooter.getNth(oneElementList, POSITION4)
     }
-    assertThrows[IndexOutOfBoundsException]{
+    assertThrows[IndexOutOfBoundsException] {
       troubleshooter.getNth(twoElementsList, POSITION4)
     }
-    assertThrows[IndexOutOfBoundsException]{
+    assertThrows[IndexOutOfBoundsException] {
       troubleshooter.getNth(normalList, POSITION99)
     }
   }
@@ -105,5 +105,22 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getLength(oneElementList) === oneElementList.length)
     assert(troubleshooter.getLength(twoElementsList) === twoElementsList.length)
     assert(troubleshooter.getLength(normalList) === normalList.length)
+  }
+
+  "S05: getReverse method" should "return same passed list if it is empty" in {
+    assert(emptyList.isEmpty)
+    assert(troubleshooter.getReverse(emptyList) === emptyList)
+    // Using built-in solution:
+    assert(troubleshooter.getReverse(emptyList) === emptyList.reverse)
+  }
+
+  it should "return reversed list" in {
+    assert(troubleshooter.getReverse(oneElementList) === List(77))
+    assert(troubleshooter.getReverse(twoElementsList) === List(10, 6))
+    assert(troubleshooter.getReverse(normalList) === List(8, 5, 3, 2, 1, 1))
+    // Using built-in solution:
+    assert(troubleshooter.getReverse(oneElementList) === oneElementList.reverse)
+    assert(troubleshooter.getReverse(twoElementsList) === twoElementsList.reverse)
+    assert(troubleshooter.getReverse(normalList) === normalList.reverse)
   }
 }

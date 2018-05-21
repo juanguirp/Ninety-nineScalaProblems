@@ -100,6 +100,7 @@ class ListProblems {
       case Nil => finalList
       case head :: tail => getRealReversedList(head :: finalList, tail)
     }
+
     getRealReversedList(Nil, list)
   }
 
