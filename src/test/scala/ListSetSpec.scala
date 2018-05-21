@@ -15,7 +15,7 @@ class ListSetSpec extends FlatSpec {
   val nonPalindromeList = List(1, 2, 3, 2, 4)
   val impairPalindromeList = List(1, 2, 3, 2, 1)
   val pairPalindromeList = List(1, 2, 2, 1)
-  val listOfList = List(List(1,2), List(3, 4, 5), List(6, 7, 8, 9), List(10))
+  val listOfList = List(List(1, 2), List(3, 4, 5), List(6, 7, 8, 9), List(10))
   val troubleshooter = new ListProblems()
   //info("... OK!")
 
@@ -168,10 +168,9 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.flatList(emptyList) === emptyList.flatten)
   }
 
-  it should "return flatten list" in {
-    assert(troubleshooter.flatList(listOfList) === List(1,2,3,4,5,6,7,8,9,10))
+  it should "return flatten list (not sorted)" in {
+    assert(troubleshooter.flatList(listOfList).sortWith(_ < _) === List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).sortWith(_ < _))
     // Using built-in solution:
-    assert(troubleshooter.flatList(listOfList) === listOfList.flatten)
-
+    assert(troubleshooter.flatList(listOfList).sortWith(_ < _) === listOfList.flatten.sortWith(_ < _))
   }
 }

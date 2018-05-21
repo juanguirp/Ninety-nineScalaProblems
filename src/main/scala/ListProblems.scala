@@ -104,6 +104,7 @@ class ListProblems {
     getRealReversedList(Nil, list)
   }
 
+  // --------------------------------------------------
   /* P06 (*) Find out whether a list is a palindrome.
     Example:
     scala> isPalindrome(List(1, 2, 3, 2, 1))
@@ -126,6 +127,7 @@ class ListProblems {
   // S02: The short way to verify if a list is a palindrome.
   def isPalindromeSimple[A](list: List[A]): Boolean = list == list.reverse
 
+  // --------------------------------------------------
   /* P07 (**) Flatten a nested list structure.
     Example:
 
@@ -137,6 +139,20 @@ class ListProblems {
   // val myFlatList1 = myList.flatten
 
   // S02: Own implementation to flatten a nested list structure.
-  def flatList[A](list: List[List[A]]): List[A] = List()
+  def flatList[A](list: List[List[A]]): List[A] = {
+    def flat(finalList: List[A], normalList: List[A]): List[A] = normalList match {
+      case Nil => finalList
+      case head :: Nil => head :: finalList
+      // Perfect tail recursion.
+      case head :: tail => flat(head :: finalList, tail)
+    }
+
+    list match {
+      case Nil => Nil
+      case head :: Nil => flat(List(), head)
+      // No tail recursion </3. (Possibly) result list will be unsorted.
+      case head :: tail => flat(List(), head) ::: flatList(tail)
+    }
+  }
 
 }
