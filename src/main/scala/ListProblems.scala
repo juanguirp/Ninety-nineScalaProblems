@@ -123,5 +123,8 @@ class ListProblems {
     }
   }
 
+  // S02: The short way to verify if a list is a palindrome.
+  def isPalindromeSimple[A](list: List[A]): Boolean = list == list.reverse
+
 
 }

@@ -127,7 +127,7 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.getReverse(normalList) === normalList.reverse)
   }
 
-  "S06: isPalindrome" should "return true if passed list is empty" in {
+  "S06-A: isPalindrome" should "return true if passed list is empty" in {
     assert(troubleshooter.isPalindrome(emptyList))
   }
 
@@ -142,5 +142,22 @@ class ListSetSpec extends FlatSpec {
 
   it should "return false if passed list is not a palindrome" in {
     assert(!troubleshooter.isPalindrome(nonPalindromeList))
+  }
+
+  "S06-B: isPalindromeSimple" should "return true if passed list is empty" in {
+    assert(troubleshooter.isPalindromeSimple(emptyList))
+  }
+
+  it should "return true if passed list has just one element" in {
+    assert(troubleshooter.isPalindromeSimple(oneElementList))
+  }
+
+  it should "return true if passed list is a palindrome" in {
+    assert(troubleshooter.isPalindromeSimple(impairPalindromeList))
+    assert(troubleshooter.isPalindromeSimple(pairPalindromeList))
+  }
+
+  it should "return false if passed list is not a palindrome" in {
+    assert(!troubleshooter.isPalindromeSimple(nonPalindromeList))
   }
 }
