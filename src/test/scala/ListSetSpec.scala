@@ -173,4 +173,18 @@ class ListSetSpec extends FlatSpec {
     // Using built-in solution:
     assert(troubleshooter.flatList(listOfList).sortWith(_ < _) === listOfList.flatten.sortWith(_ < _))
   }
+
+  "S08: compressList" should "return the same list if it is empty" in {
+    assert(troubleshooter.compressList(emptyList) === emptyList)
+  }
+
+  it should "return the same list if there is not consecutive duplicates in it" in {
+    assert(troubleshooter.compressList(twoElementsList) === twoElementsList)
+  }
+
+  it should "return a list with not consecutive duplicates elements" in {
+    assert(troubleshooter.compressList(normalList) === List(1,2,3,5,8))
+    assert(troubleshooter.compressList(pairPalindromeList) === List(1,2,1))
+  }
+
 }
