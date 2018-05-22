@@ -277,4 +277,6 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     assert(f.solution.packList(f.normalList) === List(List(1, 1), List(2), List(3), List(5), List(8)))
   }
 
+  "encodeList method" should "return a list of tuples" is (pending)
+
 }
