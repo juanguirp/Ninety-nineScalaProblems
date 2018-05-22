@@ -197,7 +197,7 @@ class ListProblems {
     def getPackedList[A](finalList: List[List[A]], realList: List[A]): List[List[A]] = {
       val (packedList, tail) = realList.span(_ == realList.head)
       // OPTION 3 [Final attempt] (final result list in a new value):
-      val resultList = List(packedList) ::: (if (finalList != List(Nil)) finalList else Nil)
+      val resultList = (if (finalList != List(Nil)) finalList else Nil) ::: List(packedList)
       tail match {
         case Nil => resultList
         case _ => getPackedList(resultList, tail)
