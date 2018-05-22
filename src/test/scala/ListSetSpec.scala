@@ -277,6 +277,15 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     assert(f.solution.packList(f.normalList) === List(List(1, 1), List(2), List(3), List(5), List(8)))
   }
 
-  "encodeList method" should "return a list of tuples" is (pending)
+  "S10: encodeList method" should "return a list of tuples with (N, A) format" in { f =>
+    Given("a list with consecutive duplicates elements")
+    val noEncodedList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+
+    When("it is encoded")
+    val encodedList = f.solution.encodeList(noEncodedList)
+
+    Then("the result is a list of tuples with (N, A) format")
+    assert(encodedList === List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)) )
+  }
 
 }
