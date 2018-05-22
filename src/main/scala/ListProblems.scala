@@ -165,6 +165,21 @@ class ListProblems {
   */
 
   // S01: Solution to get a list with not consecutive duplicates elements.
-  def compressList[A](list: List[A]): List[A] = List()
+  def compressList[A](list: List[A]): List[A] = list match {
+    case Nil => list
+    case head :: Nil => list
+    case head :: last :: Nil => if (head == last) head :: Nil else list
+    case head :: second :: tail => if (head == second) compressList(head :: tail) else head :: compressList(second :: tail)
+  }
 
+  // S02: Using tail recursion. Just copy/past/change solution of P05.
+  def compressListTailRecursion[A](list: List[A]): List[A] = {
+
+    def getRealCompression[A](finalList: List[A], realList: List[A]): List[A] = realList match {
+      case Nil => finalList.reverse
+      case head :: tail => getRealCompression(head :: finalList, tail.dropWhile(_ == head))
+    }
+
+    getRealReversedList(Nil, list)
+  }
 }

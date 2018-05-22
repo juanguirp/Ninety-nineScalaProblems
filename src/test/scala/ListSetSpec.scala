@@ -11,6 +11,7 @@ class ListSetSpec extends FlatSpec {
   val emptyList = List()
   val oneElementList = List(77)
   val twoElementsList = List(6, 10)
+  val fourDuplicateElementsList = List(8, 8, 8, 8)
   val normalList = List(1, 1, 2, 3, 5, 8)
   val nonPalindromeList = List(1, 2, 3, 2, 4)
   val impairPalindromeList = List(1, 2, 3, 2, 1)
@@ -183,6 +184,7 @@ class ListSetSpec extends FlatSpec {
   }
 
   it should "return a list with not consecutive duplicates elements" in {
+    assert(troubleshooter.compressList(fourDuplicateElementsList) === List(8))
     assert(troubleshooter.compressList(normalList) === List(1,2,3,5,8))
     assert(troubleshooter.compressList(pairPalindromeList) === List(1,2,1))
   }
