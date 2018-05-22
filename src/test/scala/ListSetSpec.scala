@@ -4,10 +4,10 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
 
   case class FixtureParam(solution: ListProblems,
                           emptyList: List[_],
-                          oneElementList: List[Any],
-                          twoElementsList: List[Any],
-                          fourDuplicateElementsList: List[Any],
-                          normalList: List[Any])
+                          oneElementList: List[_],
+                          twoElementsList: List[_],
+                          fourDuplicateElementsList: List[_],
+                          normalList: List[_])
 
   def withFixture(test: OneArgTest) = {
     // Setup, objects used in many/all test
@@ -17,13 +17,20 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     val fourDuplicateElementsList = List(8, 8, 8, 8)
     val normalList = List(1, 1, 2, 3, 5, 8)
     val troubleshooter = new ListProblems()
-    val fixtures = FixtureParam(troubleshooter, emptyList, oneElementList, twoElementsList, fourDuplicateElementsList,
+    val fixtures = FixtureParam(troubleshooter,
+      emptyList,
+      oneElementList,
+      twoElementsList,
+      fourDuplicateElementsList,
       normalList)
     // Test
-    try super.withFixture(test.toNoArgTest(fixtures))
+    try {
+      info("Starting test - " + test.name)
+      super.withFixture(test.toNoArgTest(fixtures))
+    }
     // Cleanup
     finally {
-      info("Finished test " + test.name)
+      info("Finished test - " + test.name)
     }
   }
 
