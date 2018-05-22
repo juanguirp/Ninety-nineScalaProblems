@@ -188,5 +188,35 @@ class ListProblems {
     scala> pack(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
     res0: List[List[Symbol]] = List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e))
   */
-  def packList[A](list: List[A]): List[List[A]] = Nil
+
+  // S01: A really hard solution to get.
+  // I really don't know which option is "better" or "more suitable",
+  // but Option 3 is smaller than other options and it is a tail recursive solution.
+  def packList[A](list: List[A]): List[List[A]] = {
+
+    def getPackedList[A](finalList: List[List[A]], realList: List[A]): List[List[A]] = {
+      val (packedList, tail) = realList.span(_ == realList.head)
+      // OPTION 3 [Final attempt] (final result list in a new value):
+      val resultList = List(packedList) ::: (if (finalList != List(Nil)) finalList else Nil)
+      tail match {
+        case Nil => resultList
+        case _ => getPackedList(resultList, tail)
+      }
+      // OPTION 2 [Second attempt] (pattern matching + if-else):
+      /*tail match {
+        case Nil => if (finalList == List(Nil)) List(packedList) else List(packedList) ::: finalList
+        case _ => if (finalList == List(Nil)) getPackedList(List(packedList), tail) else getPackedList(List(packedList) ::: finalList, tail)
+      }*/
+      // OPTION 1 [First attempt] (ugly, without if-else, just pattern matching):
+      /*(tail, finalList) match {
+        case (Nil, List(Nil)) => List(packedList)
+        case (Nil, _) => List(packedList) ::: finalList
+        case (_, List(Nil)) => getPackedList(List(packedList), tail)
+        case (_, _) => getPackedList(List(packedList) ::: finalList, tail)
+      }*/
+    }
+
+    if (list.isEmpty) List(Nil) else getPackedList(List(Nil), list)
+  }
+
 }
