@@ -175,7 +175,7 @@ class ListSetSpec extends FlatSpec {
     assert(troubleshooter.flatList(listOfList).sortWith(_ < _) === listOfList.flatten.sortWith(_ < _))
   }
 
-  "S08: compressList" should "return the same list if it is empty" in {
+  "S08: compressList method" should "return the same list if it is empty" in {
     assert(troubleshooter.compressList(emptyList) === emptyList)
     assert(troubleshooter.compressListTailRecursion(emptyList) === emptyList)
   }
@@ -187,11 +187,24 @@ class ListSetSpec extends FlatSpec {
 
   it should "return a list with not consecutive duplicates elements" in {
     assert(troubleshooter.compressList(fourDuplicateElementsList) === List(8))
-    assert(troubleshooter.compressList(normalList) === List(1,2,3,5,8))
-    assert(troubleshooter.compressList(pairPalindromeList) === List(1,2,1))
+    assert(troubleshooter.compressList(normalList) === List(1, 2, 3, 5, 8))
+    assert(troubleshooter.compressList(pairPalindromeList) === List(1, 2, 1))
     assert(troubleshooter.compressListTailRecursion(fourDuplicateElementsList) === List(8))
-    assert(troubleshooter.compressListTailRecursion(normalList) === List(1,2,3,5,8))
-    assert(troubleshooter.compressListTailRecursion(pairPalindromeList) === List(1,2,1))
+    assert(troubleshooter.compressListTailRecursion(normalList) === List(1, 2, 3, 5, 8))
+    assert(troubleshooter.compressListTailRecursion(pairPalindromeList) === List(1, 2, 1))
+  }
+
+  "S09: packList method" should "return the same list if it is empty" in {
+    assert(troubleshooter.packList(emptyList) === emptyList)
+  }
+
+  it should "return the same list if all items are the same in value" in {
+    assert(troubleshooter.packList(fourDuplicateElementsList) === fourDuplicateElementsList)
+  }
+
+  it should "return a list for each consecutive duplicates elements in list" in {
+    assert(troubleshooter.packList(normalList) === List(List(1, 1), List(2), List(3), List(5), List(8)))
+    assert(troubleshooter.packList(pairPalindromeList) === List(List(1), List(2, 2), List(1)))
   }
 
 }
