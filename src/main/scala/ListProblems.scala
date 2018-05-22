@@ -4,10 +4,6 @@
 
 class ListProblems {
 
-  // Constants.
-  val ZERO = 0
-  val ONE = 1
-
   // --------------------------------------------------
   /* P01 (*) Find the last element of a list.
     Example:
@@ -58,8 +54,8 @@ class ListProblems {
   // S02: Own implementation to get Nth element of a list.
   def getNth[A](list: List[A], index: Int): A = (list, index) match {
     case (Nil, _) => throw new IndexOutOfBoundsException
-    case (head :: _, ZERO) => head
-    case (_ :: tail, _) => getNth(list = tail, index - ONE)
+    case (head :: _, 0) => head
+    case (_ :: tail, _) => getNth(list = tail, index - 1)
   }
 
   // --------------------------------------------------
@@ -76,11 +72,11 @@ class ListProblems {
   // (Yes, I love tail recursion <3).
   private def getRealLength[A](list: List[A], initLength: Int): Int = list match {
     case Nil => initLength
-    case head :: tail => getRealLength(tail, initLength + ONE)
+    case head :: tail => getRealLength(tail, initLength + 1)
   }
 
   // Wrapper method. Other option: Nested/Local function.
-  def getLength[A](list: List[A]): Int = getRealLength(list, ZERO)
+  def getLength[A](list: List[A]): Int = getRealLength(list, 0)
 
   // --------------------------------------------------
   /* P05 (*) Reverse a list.
@@ -118,7 +114,7 @@ class ListProblems {
     case head :: last :: Nil if (head == last) => true
     case _ => {
       val head = list.head
-      val middle = list.slice(ONE, list.size - ONE)
+      val middle = list.slice(1, list.size - 1)
       val last = list.last
       if (head != last) false else isPalindrome(middle)
     }
