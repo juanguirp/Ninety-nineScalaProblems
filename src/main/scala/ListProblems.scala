@@ -180,6 +180,6 @@ class ListProblems {
       case head :: tail => getRealCompression(head :: finalList, tail.dropWhile(_ == head))
     }
 
-    getRealReversedList(Nil, list)
+    getRealCompression(Nil, list)
   }
 }

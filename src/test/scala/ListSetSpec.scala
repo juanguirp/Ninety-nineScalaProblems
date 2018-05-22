@@ -177,16 +177,21 @@ class ListSetSpec extends FlatSpec {
 
   "S08: compressList" should "return the same list if it is empty" in {
     assert(troubleshooter.compressList(emptyList) === emptyList)
+    assert(troubleshooter.compressListTailRecursion(emptyList) === emptyList)
   }
 
   it should "return the same list if there is not consecutive duplicates in it" in {
     assert(troubleshooter.compressList(twoElementsList) === twoElementsList)
+    assert(troubleshooter.compressListTailRecursion(twoElementsList) === twoElementsList)
   }
 
   it should "return a list with not consecutive duplicates elements" in {
     assert(troubleshooter.compressList(fourDuplicateElementsList) === List(8))
     assert(troubleshooter.compressList(normalList) === List(1,2,3,5,8))
     assert(troubleshooter.compressList(pairPalindromeList) === List(1,2,1))
+    assert(troubleshooter.compressListTailRecursion(fourDuplicateElementsList) === List(8))
+    assert(troubleshooter.compressListTailRecursion(normalList) === List(1,2,3,5,8))
+    assert(troubleshooter.compressListTailRecursion(pairPalindromeList) === List(1,2,1))
   }
 
 }
