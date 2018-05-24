@@ -251,6 +251,16 @@ class ListProblems {
     scala> decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e)))
     res0: List[Symbol] = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
   */
-  def decodeList[A](list: List[(Int, A)]): List[A] = List()
+
+  // S01: Own implementation to get decoded list.
+  def decodeList[A](list: List[(Int, A)]): List[A] = {
+    val mappedList = list map {encoded => List.fill(encoded._1)(encoded._2)}
+    mappedList.flatten
+  }
+
+  // S02: Built-in solution: flatMap = first map then flatten.
+  def decodeList2[A](list: List[(Int, A)]): List[A] = list flatMap { encoded => List.fill(encoded._1)(encoded._2) }
+
+
 
 }
