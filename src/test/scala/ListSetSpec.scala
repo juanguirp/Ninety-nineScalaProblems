@@ -288,4 +288,24 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     assert(encodedList === List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)) )
   }
 
+  "S11: encodeListModified" should "return a list with {A*, (N, A)*} format" is (pending)
+
+  "S12: " should "do something" is (pending)
+  "S13: " should "do something" is (pending)
+  "S14: " should "do something" is (pending)
+  "S15: " should "do something" is (pending)
+  "S16: " should "do something" is (pending)
+  "S17: " should "do something" is (pending)
+  "S18: " should "do something" is (pending)
+  "S19: " should "do something" is (pending)
+  "S20: " should "do something" is (pending)
+  "S21: " should "do something" is (pending)
+  "S22: " should "do something" is (pending)
+  "S23: " should "do something" is (pending)
+  "S24: " should "do something" is (pending)
+  "S25: " should "do something" is (pending)
+  "S26: " should "do something" is (pending)
+  "S27: " should "do something" is (pending)
+  "S28: " should "do something" is (pending)
+
 }
