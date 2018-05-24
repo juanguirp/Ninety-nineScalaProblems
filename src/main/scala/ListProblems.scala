@@ -235,4 +235,14 @@ class ListProblems {
     res0: List[Any] = List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e))
   */
 
+  // S01: Own implementation to get encoded list.
+  def encodeListModified[A](list: List[A]): List[Any] = {
+    packList(list) map (pack => if (pack.length == 1) pack.head else (pack.length, pack.head))
+  }
+
+  // S02: Using solution of previous problem.
+  def encodeListModified2[A](list: List[A]): List[Any] = {
+    encodeList(list) map { encoded => if (encoded._1 == 1) encoded._2 else encoded }
+  }
+
 }

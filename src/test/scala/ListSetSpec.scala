@@ -285,27 +285,47 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     val encodedList = f.solution.encodeList(noEncodedList)
 
     Then("the result is a list of tuples with (N, A) format")
-    assert(encodedList === List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)) )
+    assert(encodedList === List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e)))
   }
 
-  "S11: encodeListModified" should "return a list with {A*, (N, A)*} format" is (pending)
+  "S11: encodeListModified method" should "return a list with {A*, (N, A)*} format" in { f =>
+    Given("a list with consecutive duplicates elements")
+    val noEncodedList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
 
-  "S12: " should "do something" is (pending)
-  "S13: " should "do something" is (pending)
-  "S14: " should "do something" is (pending)
-  "S15: " should "do something" is (pending)
-  "S16: " should "do something" is (pending)
-  "S17: " should "do something" is (pending)
-  "S18: " should "do something" is (pending)
-  "S19: " should "do something" is (pending)
-  "S20: " should "do something" is (pending)
-  "S21: " should "do something" is (pending)
-  "S22: " should "do something" is (pending)
-  "S23: " should "do something" is (pending)
-  "S24: " should "do something" is (pending)
-  "S25: " should "do something" is (pending)
-  "S26: " should "do something" is (pending)
-  "S27: " should "do something" is (pending)
-  "S28: " should "do something" is (pending)
+    When("it is encoded")
+    val encodedList = f.solution.encodeListModified(noEncodedList)
+
+    Then("the result is a list of tuples with {A*, (N, A)*} format")
+    assert(encodedList === List((4, 'a), 'b, (2, 'c), (2, 'a), 'd, (4, 'e)))
+  }
+
+  it should "return a list with {A*, (N, A)*} format (using S10)" in { f =>
+    Given("a list with consecutive duplicates elements")
+    val noEncodedList = List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)
+
+    When("it is encoded")
+    val encodedList = f.solution.encodeListModified2(noEncodedList)
+
+    Then("the result is a list of tuples with {A*, (N, A)*} format")
+    assert(encodedList === List((4, 'a), 'b, (2, 'c), (2, 'a), 'd, (4, 'e)))
+  }
+
+  "S12: method" should "do something" is (pending)
+  "S13: method" should "do something" is (pending)
+  "S14: method" should "do something" is (pending)
+  "S15: method" should "do something" is (pending)
+  "S16: method" should "do something" is (pending)
+  "S17: method" should "do something" is (pending)
+  "S18: method" should "do something" is (pending)
+  "S19: method" should "do something" is (pending)
+  "S20: method" should "do something" is (pending)
+  "S21: method" should "do something" is (pending)
+  "S22: method" should "do something" is (pending)
+  "S23: method" should "do something" is (pending)
+  "S24: method" should "do something" is (pending)
+  "S25: method" should "do something" is (pending)
+  "S26: method" should "do something" is (pending)
+  "S27: method" should "do something" is (pending)
+  "S28: method" should "do something" is (pending)
 
 }
