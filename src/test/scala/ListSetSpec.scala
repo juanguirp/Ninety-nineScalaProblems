@@ -310,7 +310,17 @@ class ListSetSpec extends fixture.FlatSpec with GivenWhenThen {
     assert(encodedList === List((4, 'a), 'b, (2, 'c), (2, 'a), 'd, (4, 'e)))
   }
 
-  "S12: method" should "do something" is (pending)
+  "S12: decodeList method" should "return a list from {A*, (N, A=*} to {A}" in { f =>
+    Given("a encoded list")
+    val encodedList = List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))
+
+    When("it is decoded")
+    val decodedList = f.solution.decodeList(encodedList)
+
+    Then("the result is a list with consecutive duplicates elements")
+    assert(decodedList === List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e))
+  }
+
   "S13: method" should "do something" is (pending)
   "S14: method" should "do something" is (pending)
   "S15: method" should "do something" is (pending)
